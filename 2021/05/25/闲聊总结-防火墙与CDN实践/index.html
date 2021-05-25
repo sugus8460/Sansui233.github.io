@@ -17,7 +17,7 @@
 <!--<![endif]-->
 
 <head>
-  <title>闲聊总结 - 防火墙与CDN实践 | Sansui&#39;s Nest</title>
+  <title>防火墙与CDN实践 | Sansui&#39;s Nest</title>
   <!-- Meta data -->
     <meta http-equiv="Content-Type" content="text/html" charset="UTF-8" >
     <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
@@ -94,7 +94,7 @@
                                 
                                 <li>
                                     <a href="/categories/折腾/" class="animsition-link">
-                                        折腾<small>(7)</small></a>
+                                        折腾<small>(9)</small></a>
                                 </li>
                                 
                         </ul>
@@ -199,17 +199,20 @@
     | 
     <a href='/tags/运维/'>运维</a>,
     
+    <a href='/tags/闲聊总结/'>闲聊总结</a>,
+    
     <a href='/tags/Linux/'>Linux</a>
     
     
 </span>
-                <h1>闲聊总结 - 防火墙与CDN实践</h1>
+                <h1>防火墙与CDN实践</h1>
             </div>
         </div>
         <div class="col-md-8 col-md-offset-2">
-      		<blockquote>
-<p>这一系列不是教程，是闲聊经验总结，备份一下走过的经验，防止日后忘了想不起来</p>
-</blockquote>
+      		<p>经验总结贴，备份一下经验，防止日后忘了想不起来</p>
+<p>iptables 和 cloudflare 经验。</p>
+<span id="more"></span>
+
 <h2 id="iptables-的防火墙实践"><a href="#iptables-的防火墙实践" class="headerlink" title="iptables 的防火墙实践"></a>iptables 的防火墙实践</h2><p>需求：开放需要的端口，其他的全部拒绝</p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br></pre></td><td class="code"><pre><span class="line">:INPUT ACCEPT [778:1961067]</span><br><span class="line">:FORWARD ACCEPT [0:0]</span><br><span class="line">:OUTPUT ACCEPT [1966:4038735]</span><br><span class="line"></span><br><span class="line">-A INPUT -s 127.0.0.1 -d 127.0.0.1 -j ACCEPT</span><br><span class="line">-A OUTPUT -j ACCEPT</span><br><span class="line"># Allow all loopback (lo0) traffic and reject traffic</span><br><span class="line"># to localhost that does not originate from lo0.</span><br><span class="line">-A INPUT -i lo -j ACCEPT</span><br><span class="line">-A INPUT ! -i lo -s 127.0.0.0/8 -j REJECT</span><br><span class="line"></span><br><span class="line"># Allow ping.</span><br><span class="line">-A INPUT -p icmp --icmp-type 8 -j ACCEPT</span><br><span class="line"></span><br><span class="line">-A INPUT -p tcp --dport 22 -j ACCEPT    #允许访问22端口</span><br><span class="line">-A INPUT -p tcp --dport 80 -j ACCEPT    #允许访问80端口</span><br><span class="line">-A INPUT -p tcp --dport 443 -j ACCEPT    #允许访问443端口</span><br><span class="line">-A INPUT -p tcp -m multiport --dports 80,443 -s $ip -j ACCEPT #cloudflare白名单</span><br><span class="line"></span><br><span class="line"># Allow some local port</span><br><span class="line">-A INPUT -s 127.0.0.1/32 -p tcp -m tcp --dport 6060 -j ACCEPT</span><br><span class="line">-A INPUT -p tcp -m tcp --dport 6060 -j DROP</span><br><span class="line"></span><br><span class="line"># Keep established connection. This includes ICMP error returns.</span><br><span class="line">-A INPUT -m state --state ESTABLISHED,RELATED -j ACCEPT</span><br><span class="line"></span><br><span class="line"># Ban nmap</span><br><span class="line">-A INPUT -p tcp -m tcp --tcp-flags FIN,SYN,RST,PSH,ACK,URG FIN,PSH,URG -j REJECT --reject-with icmp-port-unreachable</span><br><span class="line">-A INPUT -p tcp -m tcp --tcp-flags SYN,RST SYN,RST -j REJECT --reject-with icmp-port-unreachable</span><br><span class="line">-A INPUT -p tcp -m tcp --tcp-flags FIN,SYN FIN,SYN -j REJECT --reject-with icmp-port-unreachable</span><br><span class="line"></span><br><span class="line"># Reject all other inbound.</span><br><span class="line">iptables -A INPUT -j REJECT</span><br><span class="line">hable</span><br><span class="line"></span><br><span class="line"># Reject all other inbound.</span><br><span class="line">iptables -A INPUT -j REJECT</span><br><span class="line">COMMIT</span><br></pre></td></tr></table></figure>
 
@@ -225,12 +228,12 @@
         <nav class="m-pagination col-md-8 col-md-offset-2 col-sm-24" role="pagination">
     
     <a class="pull-left" href="/2021/05/25/%E9%97%B2%E8%81%8A%E6%80%BB%E7%BB%93-nginx%E5%AE%9E%E8%B7%B5/" style="float: left;">
-        ← 闲聊总结 - nginx实践
+        ← nginx实践
     </a>
     
     
     <a class="pull-right" href="/2021/05/25/%E9%97%B2%E8%81%8A%E6%80%BB%E7%BB%93-github-action-%E8%87%AA%E5%8A%A8%E5%8C%96%E6%9E%84%E5%BB%BA%E5%AE%9E%E8%B7%B5%E7%BB%8F%E9%AA%8C/">
-        闲聊总结 - github-action 自动化构建实践经验 →
+        github-action 自动化构建实践经验 →
     </a>
     
 </nav>

@@ -17,7 +17,7 @@
 <!--<![endif]-->
 
 <head>
-  <title>闲聊总结 - 监控服务器的内存占用与稳定性 | Sansui&#39;s Nest</title>
+  <title>监控服务器的内存占用与稳定性 | Sansui&#39;s Nest</title>
   <!-- Meta data -->
     <meta http-equiv="Content-Type" content="text/html" charset="UTF-8" >
     <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
@@ -94,7 +94,7 @@
                                 
                                 <li>
                                     <a href="/categories/折腾/" class="animsition-link">
-                                        折腾<small>(7)</small></a>
+                                        折腾<small>(9)</small></a>
                                 </li>
                                 
                         </ul>
@@ -201,18 +201,20 @@
     
     <a href='/tags/运维/'>运维</a>,
     
+    <a href='/tags/闲聊总结/'>闲聊总结</a>,
+    
     <a href='/tags/Linux/'>Linux</a>
     
     
 </span>
-                <h1>闲聊总结 - 监控服务器的内存占用与稳定性</h1>
+                <h1>监控服务器的内存占用与稳定性</h1>
             </div>
         </div>
         <div class="col-md-8 col-md-offset-2">
-      		<blockquote>
-<p>这一系列不是教程，是闲聊经验总结，备份一下走过的经验，防止日后忘了想不起来</p>
-</blockquote>
+      		<p>经验总结贴，备份一下经验，防止日后忘了想不起来</p>
 <p>最近的有一些刁钻的问题，比如说“如果 Golang 程序因为内存过大被 OOM(Out Of Memory Killer) kill了，怎么在被 kill 之前报错再结束运行”。大概意思是，正常错误退出是会显示 panic 信息的，但如果是内存占用过大而被系统强制退出，要怎么强制退出前显示一些信息？</p>
+<span id="more"></span>
+
 <p>汗……我的第一反应是，服务器不装内存监控的吗，运维天天接报警电话觉都睡不好，等不要爆内存就需要处理了。这也是比较常见的处理方式，要是等爆内存再处理那就晚了。</p>
 <p>但技术人员面试一般只考虑技术问题而不是业务问题，那我也还是从技术角度思考一下吧。(尽管我打心底觉得思考技术实现或者做研究前需要先思考哲学上的逻辑可行性，比如我觉得C-S隐私问题必需可信的第三方公证才是彻底的，这是个哲学和社会问题，只靠技术无法解决，世界是守恒的有舍有得，本地差分隐私哲学上说就是伪命题，但之前的师兄非要硬杠没有第三公证的方案……可能是为了生活吧）</p>
 <h2 id="1-想法-检测系统的kill信号值"><a href="#1-想法-检测系统的kill信号值" class="headerlink" title="1. (想法) 检测系统的kill信号值"></a>1. (想法) 检测系统的kill信号值</h2><p>参考：<a target="_blank" rel="noopener" href="https://zhuanlan.zhihu.com/p/128953024">Golang之信号处理</a></p>
@@ -233,7 +235,7 @@
     
     
     <a class="pull-right" href="/2021/05/25/%E9%97%B2%E8%81%8A%E6%80%BB%E7%BB%93-nginx%E5%AE%9E%E8%B7%B5/">
-        闲聊总结 - nginx实践 →
+        nginx实践 →
     </a>
     
 </nav>
