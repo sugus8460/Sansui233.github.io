@@ -2672,6 +2672,7 @@ ul.page-nav i {
 
 #services {
     background-color: #FFF;
+    padding-top: 0px;
 }
 
 #services .services-intro {
@@ -2679,7 +2680,7 @@ ul.page-nav i {
 }
 
 #services .boxes {
-    padding-top: 50px;
+    /* padding-top: 50px; */
 }
 
 #services .boxes .col-md-3,
@@ -4043,6 +4044,10 @@ footer .footer_bottom {
 
 #intro .col-md-8.col-md-offset-2 p a:hover {
     color: #2C4A77;
+}
+
+#intro .col-md-10.col-md-10.col-md-offset-1 .row.boxes {
+    margin-top: 30px;
 }
 
 
