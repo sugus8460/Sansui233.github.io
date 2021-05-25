@@ -1,0 +1,29 @@
+# your domain ，局部变量$DOMAIN优先
+domain: example.com
+port: 
+
+# source definition file
+source-files:
+  # use local file
+  # - ./config/source.yaml
+  # use web file
+  - https://sansui233.github.io/demo/source
+
+# postgresql database info
+database_url: ""
+
+crawl-interval: 60
+
+# speed test
+speedtest: true          # default false. Warning: this will consume large network resources.
+speedtest-interval: 360  # default 720 (min)
+connection: 10           # default 5. The number of speed test connections simultaneously
+timeout:                 # default 10 (seconds).
+## active proxy speed test
+active-interval:         # default 60 (min)
+active-frequency: 25     # default 100 (requests per hour)
+active-max-number: 100
+
+# cloudflare api
+cf_email: ""
+cf_key: ""
