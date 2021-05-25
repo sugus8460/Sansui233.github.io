@@ -62,8 +62,7 @@
 }
 
 body {
-    background-color: #FFFFFF;
-    background-color: rgb(255, 255, 255);
+    background-color: #151515;
     font-family: "Open Sans", "Helvetica Neue", "Helvetica", "Hiragino Sans GB", "Microsoft YaHei", "Source Han Sans CN", "WenQuanYi Micro Hei", Arial, sans-serif;
     color: #666;
     font-style: normal;
@@ -3738,7 +3737,7 @@ button.send {
 ******************************************************* */
 
 footer {
-    padding: 5% 0;
+    padding: 5% 0 0;
     background: #151515;
     z-index: 9;
     position: relative;
