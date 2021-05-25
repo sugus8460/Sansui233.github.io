@@ -76,7 +76,6 @@
 }
 
 body {
-    height: 100%;
     background-color: #FFFFFF;
     background-color: rgb(255, 255, 255);
     font-family: "Open Sans", "Helvetica Neue", "Helvetica", "Hiragino Sans GB", "Microsoft YaHei", "Source Han Sans CN", "WenQuanYi Micro Hei", Arial, sans-serif;
@@ -4115,21 +4114,6 @@ footer .footer_bottom {
 
 nav.pagination {
     display: block;
-}
-
-
-/*---------------- Fix Layout ------------------------*/
-
-#sb-site {
-    height: 100%;
-}
-
-.page {
-    min-height: 100%;
-}
-
-footer {
-    margin-top: -105.55px;
 }
 @charset "utf-8";
 
