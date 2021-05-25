@@ -17,7 +17,7 @@
 <!--<![endif]-->
 
 <head>
-  <title>Tag: Linux | Sansui&#39;s Nest</title>
+  <title>B站反查用户弹幕小记 | Sansui&#39;s Nest</title>
   <!-- Meta data -->
     <meta http-equiv="Content-Type" content="text/html" charset="UTF-8" >
     <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
@@ -61,7 +61,7 @@
 </head>
 
 <!--
-<body class="home-template">
+<body class="post-template">
 -->
 <body id="index" class="lightnav animsition">
 
@@ -294,68 +294,127 @@
 
     <!-- ============================ Header & Logo bar =========================== -->
       
-
-    <section id="intro">
-        <div class="container">
-            <div class="col-md-10 col-md-offset-1">
-                <div class="row boxes">
-                    <h1>
-                        Linux
-                    </h1>
-                </div>
+<section id="intro">
+    <div class="container">
+        <div class="row col-md-offset-2">
+            <div class="col-md-8">
+    			<span class="post-meta">
+      <time datetime="2018-08-14T17:23:49.000Z" itemprop="datePublished">
+          2018-08-15
+      </time>
+    
+    
+    | 
+    <a href='/tags/前端/'>前端</a>
+    
+    
+</span>
+                <h1>B站反查用户弹幕小记</h1>
             </div>
         </div>
-    </section>
+        <div class="col-md-8 col-md-offset-2">
+      		<p>工具：Chrome浏览器</p>
+<p>反查用户分为视频里现存的弹幕反查和历史弹幕反查。其中反查历史弹幕需要用Chrome的调试工具，需要懂一点前端，比较简单，仍然是非技术向的一个小记。</p>
+<span id="more"></span>
 
+<h2 id="从视频里现存的弹幕反查用户"><a href="#从视频里现存的弹幕反查用户" class="headerlink" title="从视频里现存的弹幕反查用户"></a>从视频里现存的弹幕反查用户</h2><p>能有工具用就用。以下两个工具都能实现从视频里现存的弹幕反查用户。</p>
+<ul>
+<li><a target="_blank" rel="noopener" href="https://www.b612.me/danmu/">Bilibili弹幕发送查询</a></li>
+<li>Chrome扩展<a target="_blank" rel="noopener" href="https://chrome.google.com/webstore/detail/%E5%93%94%E5%93%A9%E5%93%94%E5%93%A9%E5%8A%A9%E6%89%8B%EF%BC%9Abilibilicom-%E7%BB%BC%E5%90%88%E8%BE%85%E5%8A%A9%E6%89%A9%E5%B1%95/kpbnombpnpcffllnianjibmpadjolanh?hl=en-US">Bilibili Helper</a></li>
+</ul>
+<h2 id="从历史弹幕里反查"><a href="#从历史弹幕里反查" class="headerlink" title="从历史弹幕里反查"></a>从历史弹幕里反查</h2><p>了解原理需要知道前端的基础。原理在<a target="_blank" rel="noopener" href="https://typcn.com/legacy/blog/posts/bilibili-comment-sender-digger.html">这篇文章</a>里说得很清楚了，一定要看。（目前文章已失效，请继续往下看）</p>
+<p>问题是在于历史弹幕文件的获取。2018年历史弹幕的API有变动，需要用户已经登录了才能获取（因为页面的请求方式是是Request），因此之前网上的工具箱都没法用了。这里说一下使用Chrome的开发者工具获取历史弹幕并反查用户的方式。</p>
+<p>首先，Chrome需要登录过bilibili，这样才能有cookie。</p>
+<p>然后打开一个视频，这里用<a target="_blank" rel="noopener" href="https://www.bilibili.com/video/av29242495">av29242495</a>为例。</p>
+<p>开启Chrome的开发者工具，并选择network选项卡，刷新一下，大概是这样。</p>
+<p><img src="http://ww1.sinaimg.cn/large/6530f589ly1g8jz1fap2vj21yk11gnpd.jpg" alt="Chrome.png"></p>
+<p>在上图的bilibili界面中选”查看历史弹幕”，选则一个日期（我选的8月14日）。然后在右侧的Filter中填入history，结果是这样</p>
+<p><img src="http://ww1.sinaimg.cn/large/6530f589ly1g8jz3gihc4j21y61187wh.jpg" alt="HistoryDanma.png"></p>
+<p>其中以history开头的文件就是我们所需要的历史弹幕文件，双击就可以在新标签页中打开。这个例子中的历史弹幕文件地址长这样：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">https://api.bilibili.com/x/v2/dm/history?type=1&amp;oid=50775916&amp;date=2018-08-13</span><br></pre></td></tr></table></figure>
+
+<p>可以见这个历史弹幕的api就长这样，oid是视频的编号（不是av号），后面加个date。type=1目前我没弄清楚是什么。</p>
+<p>弹幕文件里的弹幕都是这个样子的</p>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">d</span> <span class="attr">p</span>=<span class="string">&quot;弹幕出现时间,模式,字体大小,颜色,发送时间戳,弹幕池,用户Hash,数据库ID&quot;</span>&gt;</span>123123<span class="tag">&lt;/<span class="name">d</span>&gt;</span></span><br><span class="line"><span class="comment">&lt;!--比如--&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">d</span> <span class="attr">p</span>=<span class="string">&quot;10.15700,1,25,16777215,1534175832,0,39d120,3687662110113792&quot;</span>&gt;</span>卧槽番外<span class="tag">&lt;/<span class="name">d</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">d</span> <span class="attr">p</span>=<span class="string">&quot;19.93100,1,25,16777215,1534175761,0,6acc8733,3687624958541824&quot;</span>&gt;</span>台词太强了，节奏太好了<span class="tag">&lt;/<span class="name">d</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">d</span> <span class="attr">p</span>=<span class="string">&quot;24.98000,1,25,16777215,1534175677,0,f11c8b72,3687580849668100&quot;</span>&gt;</span>来啦 给大大比心<span class="tag">&lt;/<span class="name">d</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<p>其中要用的是用户Hash。用户Hash只是简单的把数字ID用<a target="_blank" rel="noopener" href="http://www.itu.int/rec/T-REC-I.363.5-199608-I/en">ITU I.363.5</a>算法进行了Hash。不过这里不用手动写算法了，因为下面的接口还能用。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">https://biliquery.typcn.com/api/user/hash/[用户Hash]</span><br></pre></td></tr></table></figure>
+
+<p>比如我从文件里任意选了两个用户Hash，替换掉上面的[用户Hash]，分别返回了如下结果</p>
+<figure class="highlight json"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">&#123;<span class="attr">&quot;error&quot;</span>:<span class="number">0</span>,<span class="attr">&quot;data&quot;</span>:[&#123;<span class="attr">&quot;id&quot;</span>:<span class="number">17882889</span>&#125;]&#125; <span class="comment">// 比较老的用户</span></span><br><span class="line">&#123;<span class="attr">&quot;error&quot;</span>:<span class="number">0</span>,<span class="attr">&quot;data&quot;</span>:[&#123;<span class="attr">&quot;id&quot;</span>:<span class="number">390105526</span>&#125;,&#123;<span class="attr">&quot;id&quot;</span>:<span class="number">21670130</span>&#125;]&#125; <span class="comment">// 一般新用户</span></span><br></pre></td></tr></table></figure>
+
+<p>用户ID(uid)为后者。用B站的个人主页网址格式就能找到了弹幕发送者的主页了。格式如下</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">https://space.bilibili.com/uid/#/</span><br></pre></td></tr></table></figure>
+            <div class="clearfix"></div>
+            <hr class="nogutter">
+        </div>
+        <nav class="m-pagination col-md-8 col-md-offset-2 col-sm-24" role="pagination">
     
-            <section id="services">
-                <div class="container">
-                    <div class="row">
-                        <div class="col-md-10 col-md-offset-1">
-                            <div class="row boxes">
-                                
-                                    
-                                        
-                                        
-                                            <div class="col-xs-12 col-sm-3 col-md-3 col-lg-3 wow fadeInUp" data-wow-delay="0.3s">
-                                                
-                                                                    <h4 class="title">
-                                                                        <a href="/2021/05/25/闲聊总结-监控服务器的内存占用与稳定性/">
-                                                                            监控服务器的内存占用与稳定性
-                                                                        </a>
-                                                                    </h4>
-                                                                    
-                                                                        <p><time datetime="2021-05-25T08:07:23.000Z"><a href="/2021/05/25/闲聊总结-监控服务器的内存占用与稳定性/">2021-05-25</a></time></p>
-                                            </div>
-                                            
-                                        
-                                        
-                                            <div class="col-xs-12 col-sm-3 col-md-3 col-lg-3 wow fadeInUp" data-wow-delay="0.3s">
-                                                
-                                                                    <h4 class="title">
-                                                                        <a href="/2021/05/25/闲聊总结-防火墙与CDN实践/">
-                                                                            防火墙与CDN实践
-                                                                        </a>
-                                                                    </h4>
-                                                                    
-                                                                        <p><time datetime="2021-05-25T07:57:46.000Z"><a href="/2021/05/25/闲聊总结-防火墙与CDN实践/">2021-05-25</a></time></p>
-                                            </div>
-                                            
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </section>
-            
-                <section id="statement">
-                    <div class="container text-center wow fadeInUp" data-wow-delay="0.5s">
-                        <div class="row">
-                            <p>
-                                いつか死ぬとなぜ生まれた
-                            </p>
-                        </div>
-                    </div>
-                </section>
+    <a class="pull-left" href="/2018/08/17/%E8%BF%91%E6%9C%9F%E8%B5%84%E6%BA%90%E6%95%B4%E7%90%862018-08-17/" style="float: left;">
+        ← 近期资源整理2018-08-17
+    </a>
+    
+    
+    <a class="pull-right" href="/2018/02/06/%E4%BD%BF%E7%94%A8pandoc%E8%BD%AC%E6%8D%A2md%E4%B8%BAPDF%E5%B9%B6%E6%B7%BB%E5%8A%A0%E4%B8%AD%E6%96%87%E6%94%AF%E6%8C%81/">
+        使用pandoc转换md为PDF并添加中文支持 →
+    </a>
+    
+</nav>
+
+        <div class="col-md-8 col-md-offset-2 col-sm-24"><script type="text/javascript">
+  /**
+   * 搜狐畅言
+   */
+
+  /*
+  document.write('<div id="SOHUCS" sid="' + window.location.pathname.slice(1) + '" ></div>');
+
+  window.onload = function () {
+    (function () {
+      var appid = 'cytXXXX';
+      var conf = 'prod_xxxxxxxxxxxxxxxxx';
+      var width = window.innerWidth || document.documentElement.clientWidth;
+      var loadJs = function (d, a, id) {
+        var c = document.getElementsByTagName("head")[0] || document.head || document.documentElement;
+        var b = document.createElement("script");
+        b.setAttribute("type", "text/javascript");
+        b.setAttribute("charset", "UTF-8");
+        b.setAttribute("src", d);
+        if (id) {
+          b.setAttribute("id", id);
+        }
+        if (typeof a === "function") {
+          if (window.attachEvent) {
+            b.onreadystatechange = function () {
+              var e = b.readyState;
+              if (e === "loaded" || e === "complete") {
+                b.onreadystatechange = null;
+                a()
+              }
+            }
+          } else {
+            b.onload = a
+          }
+        }
+        c.appendChild(b)
+      };
+
+      loadJs("https://changyan.sohu.com/upload/changyan.js", function () {
+        window.changyan.api.config({
+          appid: appid,
+          conf: conf
+        })
+      });
+    })();
+  }
+  */
+
+</script>
+</div>
+    </div>
+</section>
+
+
       
 <!-- ============================ Footer =========================== -->
 
