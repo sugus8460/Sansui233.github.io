@@ -6,7 +6,7 @@
   <link href="https://sansui233.github.io/atom.xml" rel="self"/>
   
   <link href="https://sansui233.github.io/"/>
-  <updated>2021-05-25T16:08:58.735Z</updated>
+  <updated>2021-05-26T08:22:39.232Z</updated>
   <id>https://sansui233.github.io/</id>
   
   <author>
@@ -15,6 +15,27 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>网盘目录程序比较</title>
+    <link href="https://sansui233.github.io/2021/05/26/%E7%BD%91%E7%9B%98%E7%9B%AE%E5%BD%95%E7%A8%8B%E5%BA%8F%E6%AF%94%E8%BE%83/"/>
+    <id>https://sansui233.github.io/2021/05/26/%E7%BD%91%E7%9B%98%E7%9B%AE%E5%BD%95%E7%A8%8B%E5%BA%8F%E6%AF%94%E8%BE%83/</id>
+    <published>2021-05-25T17:15:45.000Z</published>
+    <updated>2021-05-26T08:22:39.232Z</updated>
+    
+    <content type="html"><![CDATA[<p>比较一下私人网盘有关的程序 cloudreve onemanager onesharelist zfile nextcloud</p><span id="more"></span><h2 id="1-Cloudreve"><a href="#1-Cloudreve" class="headerlink" title="1. Cloudreve"></a>1. Cloudreve</h2><p>是个网盘程序，意思是在服务器上运行这个程序你就能成为了千度网盘的老板，可以拥有很多注册会员，还可以给他们收费，从此发家致富(bushi)。</p><ul><li>需要服务器和域名</li><li>文档不全，社区还行，使用方法社区找</li><li>是真的网盘，不是网盘列表程序，适合建站用，One Drive个人帐号不能用。</li><li>没事记得备份 (不知道换服务器时迁移数据麻不麻烦，反正可以用Docker)</li></ul><h2 id="2-One-manager"><a href="#2-One-manager" class="headerlink" title="2. One-manager"></a>2. One-manager</h2><p>网盘列表程序，阿里云或者Onedrive的网盘里的文件列出来，便于集中分享。单纯是个人分享站。</p><ul><li>serverless，不需要服务器和域名，可白嫖资本家的服务</li><li>README 即文档，issue 即社区。README写得像随便记的笔记，好在也不复杂都有引导</li><li>功能很多，除了基础的分享、预览、下载功能，可以上传重命名等进行管理(但是界面不好看导致体验并不好)。不依靠程序设定，而是把网盘里的文件作为功能性文件，挺方便的，再次部署时不用迁移任何数据</li><li>可以预览的文件格式很多，没什么bug</li><li>界面比较丑，前台可以换主题。但好看的功能不全，后台不能换主题(强行要换也是可以但可能功能不全)。</li></ul><h2 id="3-zfile"><a href="#3-zfile" class="headerlink" title="3. zfile"></a>3. zfile</h2><p>是网盘列表程序，同One Manager。</p><ul><li>需要服务器和域名。但看情况也许可以Serverless？不清楚Java</li><li>有文档，README说得很清楚，不用一脸懵逼找社区</li><li>功能不多，基础的分享、预览、下载功能，前端好，交互体验好</li><li>文件预览有Bug，OneDrive的视频流经常加载不出来，FLV会一直加载失败。但，好看是真的</li></ul><p>开发者是98年的(暴击)</p><h2 id="4-nextcloud"><a href="#4-nextcloud" class="headerlink" title="4. nextcloud"></a>4. nextcloud</h2><p>个人网盘程序，和Cloudreve一个性质的。很多插件，交互是最好的，也比较耗资源，适合家里获团队用。</p><p>external storage 装起来复杂，不好白嫖资本家。</p>]]></content>
+    
+    
+    <summary type="html">&lt;p&gt;比较一下私人网盘有关的程序 cloudreve onemanager onesharelist zfile nextcloud&lt;/p&gt;</summary>
+    
+    
+    
+    <category term="折腾" scheme="https://sansui233.github.io/categories/%E6%8A%98%E8%85%BE/"/>
+    
+    
+    <category term="工具" scheme="https://sansui233.github.io/tags/%E5%B7%A5%E5%85%B7/"/>
+    
+  </entry>
   
   <entry>
     <title>监控服务器的内存占用与稳定性</title>
@@ -238,15 +259,15 @@
     <link href="https://sansui233.github.io/2020/11/24/Mac%E4%B8%8A%E5%A6%82%E4%BD%95%E5%BC%80%E6%9C%BA%E4%B8%8E%E5%85%B3%E6%9C%BA%E6%97%B6%E8%87%AA%E5%8A%A8%E8%BF%90%E8%A1%8CShell%E8%84%9A%E6%9C%AC/"/>
     <id>https://sansui233.github.io/2020/11/24/Mac%E4%B8%8A%E5%A6%82%E4%BD%95%E5%BC%80%E6%9C%BA%E4%B8%8E%E5%85%B3%E6%9C%BA%E6%97%B6%E8%87%AA%E5%8A%A8%E8%BF%90%E8%A1%8CShell%E8%84%9A%E6%9C%AC/</id>
     <published>2020-11-23T17:15:45.000Z</published>
-    <updated>2021-05-25T16:36:40.330Z</updated>
+    <updated>2021-05-26T08:20:23.090Z</updated>
     
-    <content type="html"><![CDATA[<p>网上讲如何开机运行脚本的很多，但我有关机时关闭远程服务的需求。于是上外网查了一下如何在关机时执行一段脚本。</p><h2 id="新建一个shell文件"><a href="#新建一个shell文件" class="headerlink" title="新建一个shell文件"></a>新建一个shell文件</h2><p>这个shell中包含了你需要开机关机时运行的脚本。</p><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#!/bin/bash</span></span><br><span class="line"><span class="keyword">function</span> <span class="function"><span class="title">shutdown</span></span>()</span><br><span class="line">&#123;</span><br><span class="line"></span><br><span class="line">  <span class="comment"># 关机用的脚本放这里</span></span><br><span class="line"></span><br><span class="line">  <span class="built_in">exit</span> 0</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">function</span> <span class="function"><span class="title">startup</span></span>()</span><br><span class="line">&#123;</span><br><span class="line"></span><br><span class="line">  <span class="comment"># 开机用的脚本放这里</span></span><br><span class="line"></span><br><span class="line">  tail -f /dev/null &amp;</span><br><span class="line">  <span class="built_in">wait</span> $!</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="built_in">trap</span> shutdown SIGTERM</span><br><span class="line"><span class="built_in">trap</span> shutdown SIGKILL</span><br><span class="line"></span><br><span class="line">startup;</span><br></pre></td></tr></table></figure><p>以上文件我取名为launchdeamon，赋予了当前用户的执行权限。</p><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">chmod 755 launchdaemon</span><br></pre></td></tr></table></figure><h1 id="新建plist文件"><a href="#新建plist文件" class="headerlink" title="新建plist文件"></a>新建plist文件</h1><p>为了让launchdeamon能在开机时自动运行，需要编写一个相应plist文件，使用launctl做到开机启动。关于launchctl和plist的作用，请先查看这篇文章：<a href="https://www.jianshu.com/p/b65c1d339eec">Mac执行定时任务之launchctl</a>。</p><p>plist文件的内容如下：</p><figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;</span></span><br><span class="line"><span class="meta">&lt;!DOCTYPE <span class="meta-keyword">plist</span> <span class="meta-keyword">PUBLIC</span> <span class="meta-string">&quot;-//Apple//DTD PLIST 1.0//EN&quot;</span> <span class="meta-string">&quot;http://www.apple.com/DTDs/PropertyList-1.0.dtd&quot;</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">plist</span> <span class="attr">version</span>=<span class="string">&quot;1.0&quot;</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">dict</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">key</span>&gt;</span>Label<span class="tag">&lt;/<span class="name">key</span>&gt;</span><span class="tag">&lt;<span class="name">string</span>&gt;</span>boot-shutdown<span class="tag">&lt;/<span class="name">string</span>&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="tag">&lt;<span class="name">key</span>&gt;</span>ProgramArguments<span class="tag">&lt;/<span class="name">key</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">array</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">string</span>&gt;</span>$SCRIPT_PATH/launchdaemon<span class="tag">&lt;/<span class="name">string</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">array</span>&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="tag">&lt;<span class="name">key</span>&gt;</span>RunAtLoad<span class="tag">&lt;/<span class="name">key</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">true</span>/&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="tag">&lt;<span class="name">key</span>&gt;</span>StandardOutPath<span class="tag">&lt;/<span class="name">key</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">string</span>&gt;</span>$LOG_PATH/boot-shutdown.log<span class="tag">&lt;/<span class="name">string</span>&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="tag">&lt;<span class="name">key</span>&gt;</span>StandardErrorPath<span class="tag">&lt;/<span class="name">key</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">string</span>&gt;</span>$PLOG_PATH/boot-shutdown.err<span class="tag">&lt;/<span class="name">string</span>&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="tag">&lt;/<span class="name">dict</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">plist</span>&gt;</span></span><br></pre></td></tr></table></figure><p>plist文件以键值对的形式存储信息。以上文件的字段解释：</p><ul><li><code>Label</code>：标签，也就是运行该plist显示的名字。这里为boot-shutdown</li><li><code>ProgramArguments</code>：<code>array</code>里可以存放多个需要运行程序。这里的<code>$SCRIPT_PATH</code>请自己修改。</li><li><code>RunAtLoad</code>：开机自启，为<code>true</code></li><li><code>StandardOutPath</code>：打印标准输出到某个文件，方便查看程序后台运行的结果，<code>$LOG_PATH</code>自行修改。</li><li><code>StandardErrorPath</code>：打印标准错误到某个文件，同上。</li></ul><p>以上文件我取名为 boot-shutdown-script.plist 。</p><p>由于shell脚本的执行权限是当前用户，以上文件需要放入当前用户的开机启动文件夹，即为  ~/Library/LaunchAgents 。</p><p>然后将plist文件加入开启启动：</p><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">launchctl load ~/Library/LaunchAgents/boot-shutdown-script.plist</span><br></pre></td></tr></table></figure><p>此时重启后，可以使用以下命令查看脚本运行状态</p><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">launchctl list | grep boot</span><br></pre></td></tr></table></figure><p>输出为</p><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">4380boot-shutdown</span><br></pre></td></tr></table></figure><p>第一个是pid。第二个为状态码，为0说明正常运行中。</p><hr><p>参考：</p><ul><li><a href="https://stackoverflow.com/questions/24200924/run-a-script-only-at-shutdown-not-log-off-or-restart-on-mac-os-x">Run a script only at shutdown (not log off or restart) on Mac OS X</a></li></ul>]]></content>
+    <content type="html"><![CDATA[<p>#折腾</p>]]></content>
     
     
       
       
-    <summary type="html">&lt;p&gt;网上讲如何开机运行脚本的很多，但我有关机时关闭远程服务的需求。于是上外网查了一下如何在关机时执行一段脚本。&lt;/p&gt;
-&lt;h2 id=&quot;新建一个shell文件&quot;&gt;&lt;a href=&quot;#新建一个shell文件&quot; class=&quot;headerlink&quot; title=&quot;新建一个shell</summary>
+    <summary type="html">&lt;p&gt;#折腾&lt;/p&gt;
+</summary>
       
     
     
@@ -496,32 +517,6 @@
     <category term="工具" scheme="https://sansui233.github.io/tags/%E5%B7%A5%E5%85%B7/"/>
     
     <category term="markdown" scheme="https://sansui233.github.io/tags/markdown/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>Welcome to Sansui&#39;s blog</title>
-    <link href="https://sansui233.github.io/2018/02/06/hello/"/>
-    <id>https://sansui233.github.io/2018/02/06/hello/</id>
-    <published>2018-02-06T04:00:00.000Z</published>
-    <updated>2021-05-25T15:44:42.242Z</updated>
-    
-    <content type="html"><![CDATA[<p>欢迎来到一个平凡的博客。</p><p>这个博客包含的是发布后不会再更改的文章，不会包含个人笔记，一是发布之后更新起来着实麻烦，二是过于琐碎，三是markdown的渲染结果不同平台有较大的差异，尤其在经常换行的技术性笔记上。</p><p>博客模板文件使用的是<a href="https://github.com/Huxpro/huxblog-boilerplate">huxblog-boilerplate</a>的模板，它的来源是<a href="https://github.com/Huxpro/huxpro.github.io">huxpro.github.io</a>。十分感谢。</p><p>鉴于模板代码是两年前的，此期间有Liquid语法一些小幅度的更新，对模板文件进行了一些小的修复，具体情况见我的博客仓库<a href="https://github.com/ChiantiM/ChiantiM.github.io">README</a>。</p><p>三水，记于2018年02月06日。</p>]]></content>
-    
-    
-      
-      
-    <summary type="html">&lt;p&gt;欢迎来到一个平凡的博客。&lt;/p&gt;
-&lt;p&gt;这个博客包含的是发布后不会再更改的文章，不会包含个人笔记，一是发布之后更新起来着实麻烦，二是过于琐碎，三是markdown的渲染结果不同平台有较大的差异，尤其在经常换行的技术性笔记上。&lt;/p&gt;
-&lt;p&gt;博客模板文件使用的是&lt;a href</summary>
-      
-    
-    
-    
-    <category term="其他" scheme="https://sansui233.github.io/categories/%E5%85%B6%E4%BB%96/"/>
-    
-    
-    <category term="blog" scheme="https://sansui233.github.io/tags/blog/"/>
     
   </entry>
   
