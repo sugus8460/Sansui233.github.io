@@ -304,7 +304,7 @@
 <p>查找上面所有的 <code>/Users/aaa/Developer/tools/</code> ，改成你想要的路径。其中第一个路径是前面的脚本的路径。</p>
 <p>时间间隔为 3600 秒，可以自己修改。</p>
 <p>然后执行</p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">$</span><span class="bash"> sudo cp githubhosts.plist /Library/LaunchDaemons</span></span><br><span class="line"><span class="meta">$</span><span class="bash"> sudo chown root:admin /Library/LaunchDaemons/githubhosts.plist</span></span><br><span class="line"><span class="meta">$</span><span class="bash"> sudo launchctl load -w /Library/LaunchDaemons/githubhosts.plist</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">$</span><span class="bash"> sudo cp githubhosts.plist /Library/LaunchAgents</span></span><br><span class="line"><span class="meta">$</span><span class="bash"> sudo chown root:admin /Library/LaunchAgents/githubhosts.plist</span></span><br><span class="line"><span class="meta">$</span><span class="bash"> sudo launchctl load -w /Library/LaunchAgents/githubhosts.plist</span></span><br></pre></td></tr></table></figure>
 
 <p>执行完就会立刻运行一次脚本。由于是 root 用户不是个人用户，不会有通知，可以看 log。</p>
 
