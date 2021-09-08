@@ -325,12 +325,13 @@
                     <div class="col-md-8">
                         <p>
                             
-                                        此工具已更新至 Github。
-
-最近 Github 墙得越来越厉害了。写了个 Shell 工具，连不上的时候就更新一下。可以配合 Alfred 使用。
-使用的 host 源来自这里。其实用 SwitchHosts 更新也行，但我真的讨厌 Electron App……麻了，现在听个歌写个笔记 1个多 G 的内存就没了。
-也可以用写成定时程序后台运行，加个 LaunchDaemon 文件就行，但，我不会打包 Mac App……文件这么散着
-                                            
+                                <p>此工具已更新至 <a target="_blank" rel="noopener" href="https://github.com/Sansui233/mac-githubhosts-autoupdate">Github</a>。</p>
+<ul>
+<li>安装卸载脚本</li>
+<li>自动定时运行</li>
+<li>平时不占内存，运行时几乎不占内存</li>
+</ul>
+                                    
                         </p>
                         
                             <p class="pull-right readMore">
@@ -369,7 +370,13 @@
                     <div class="col-md-8">
                         <p>
                             
-                                <p>比较一下私人网盘有关的程序 cloudreve onemanager onesharelist zfile nextcloud</p>
+                                <p>比较一下私人网盘有关的程序</p>
+<ul>
+<li>cloudreve</li>
+<li>onemanager</li>
+<li>zfile</li>
+<li>nextcloud</li>
+</ul>
                                     
                         </p>
                         
@@ -476,8 +483,8 @@
                 <div class="col-md-8 col-md-offset-2 opening-statement">
                     <div class="col-md-4">
                         <h3>
-                            <a href="/2020/12/12/受不了了，决定看看是谁在D我/">
-                                受不了了，决定看看是谁在D我
+                            <a href="/2020/12/12/看看是谁在D我/">
+                                看看是谁在D我
                             </a>
                         </h3>
                         <span>
@@ -501,14 +508,13 @@
                     <div class="col-md-8">
                         <p>
                             
-                                        自从部署了服务器，一直都觉得访问量不太正常。但我也仅仅是对IP做了防护，CDN防火墙也没怎么设置。
-直到最近觉得，天天访问上万，唯一IP数却一千不到，cache率更是一直都在1%以下。决定看看是哪些人（IP）干的事，服务器实在不值得。
-查看ip访问行为web服务器使用的nginx，由于CDN的关系，nginx需要有http-realip的模块才能查看CDN前的ip。找了不少资料就只觉得这个文章不错，废话少过程清晰，还很贴心给了生成脚本（
-                                            
+                                <p>自从部署了服务器，一直都觉得访问量不太正常。但我也仅仅是对IP做了防护，CDN防火墙也没怎么设置。</p>
+<p>直到最近觉得，天天访问上万，唯一IP数却一千不到，cache率更是一直都在1%以下。决定看看是哪些人（IP）干的事，服务器实在不值得。</p>
+                                    
                         </p>
                         
                             <p class="pull-right readMore">
-                                <a href="/2020/12/12/受不了了，决定看看是谁在D我/">
+                                <a href="/2020/12/12/看看是谁在D我/">
                                     Read More...</a>
                             </p>
                             
@@ -522,8 +528,8 @@
                 <div class="col-md-8 col-md-offset-2 opening-statement">
                     <div class="col-md-4">
                         <h3>
-                            <a href="/2020/11/26/关于Golang的结构体与指针不得不提的二三事/">
-                                关于Golang的结构体与指针不得不提的二三事
+                            <a href="/2020/11/26/关于指针与Golang的结构体/">
+                                关于指针与Golang的结构体
                             </a>
                         </h3>
                         <span>
@@ -543,14 +549,12 @@
                     <div class="col-md-8">
                         <p>
                             
-                                        之前在学C++的时候，指针的用法就困惑了很久。后来有了计算机体系结构基础后，再加上Golang的一些说明，就突然明白了，之前纠结的点在哪里。
-其实让我明白的只是因为Go tour中的两句话：
-12345Struct fields can be accessed through a struct pointer.结构体字段可以使用结构体指针获取。To access the field X of a struct when we have 
-                                            
+                                <p>之前在学C++的时候，指针的用法就困惑了很久。后来有了计算机体系结构基础后，再加上Golang的一些说明，就突然明白了，之前为什么不理解指针。纠结的点在哪里。</p>
+                                    
                         </p>
                         
                             <p class="pull-right readMore">
-                                <a href="/2020/11/26/关于Golang的结构体与指针不得不提的二三事/">
+                                <a href="/2020/11/26/关于指针与Golang的结构体/">
                                     Read More...</a>
                             </p>
                             
@@ -668,11 +672,9 @@
                     <div class="col-md-8">
                         <p>
                             
-                                        之前看“不能使用该名称”的GFW定罪系列文章，阐述了司法实践中对于计算机概念不清晰导致的问题，觉得非常学术，逻辑上真的很有道理。所有回避攻击的手段怎么就变成入侵计算机或者非法访问网站了呢？
-但最近在阅读Clash的源码时，突然开始觉得，“非法获取计算机系统数据、非法控制计算机信息系统罪”对于节点的提供者或许是成立的。
-
-《中华人民共和国刑法》第285五条第2款违反国家规定，侵入前款规定以外的计算机信息系统或者采用其他技术手段，获取该计算
-                                            
+                                <p>之前看“不能使用该名称”的GFW定罪系列文章，阐述了司法实践中对于计算机概念不清晰导致的问题，觉得非常学术，逻辑上真的很有道理。所有回避攻击的手段怎么就变成入侵计算机或者非法访问网站了呢？</p>
+<p>但最近在阅读Clash的源码时，突然开始觉得，“非法获取计算机系统数据、非法控制计算机信息系统罪”对于节点的提供者或许是成立的。</p>
+                                    
                         </p>
                         
                             <p class="pull-right readMore">
@@ -877,13 +879,8 @@ mac上的Global Protect近似于流氓软件，但迫于学校要求不得不用
                     <div class="col-md-8">
                         <p>
                             
-                                        这次的主题是yilia，一个hexo官网没有的但很多人都知道的大佬的主题。移动端的优化很好。
-偏重于内容，挺生活化的，搜索也很全。
-本来想用Maupassant，一个非常小清新且简洁的主题。但移动端问题有点多。比如移动端拉下去后不能到顶端，不能搜索和看标签。timeline的pass与now排列有问题……其他都还挺好的。
-yilia接入gittalks评论。
-Hexo yilia 主题一揽子使用方案
-2020-11换成了Hugo的Lov
-                                            
+                                <p>这次的主题是<a target="_blank" rel="noopener" href="https://github.com/litten/hexo-theme-yilia">yilia</a>，一个hexo官网没有的但很多人都知道的大佬的主题。移动端的优化很好。</p>
+                                    
                         </p>
                         
                             <p class="pull-right readMore">
@@ -1045,11 +1042,8 @@ Hexo yilia 主题一揽子使用方案
                     <div class="col-md-8">
                         <p>
                             
-                                        欢迎来到一个平凡的博客。
-这个博客包含的是发布后不会再更改的文章，不会包含个人笔记，一是发布之后更新起来着实麻烦，二是过于琐碎，三是markdown的渲染结果不同平台有较大的差异，尤其在经常换行的技术性笔记上。
-博客模板文件使用的是huxblog-boilerplate的模板，它的来源是huxpro.github.io。十分感谢。
-鉴于模板代码是两年前的，此期间有Liquid语法一些小幅度的更新，对模板文件进行了一些小的修复，具体情况见
-                                            
+                                <p>欢迎来到一个平凡的博客。</p>
+                                    
                         </p>
                         
                             <p class="pull-right readMore">

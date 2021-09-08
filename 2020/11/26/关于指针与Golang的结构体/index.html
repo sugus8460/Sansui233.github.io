@@ -17,7 +17,7 @@
 <!--<![endif]-->
 
 <head>
-  <title>关于Golang的结构体与指针不得不提的二三事 | Sansui&#39;s Nest</title>
+  <title>关于指针与Golang的结构体 | Sansui&#39;s Nest</title>
   <!-- Meta data -->
     <meta http-equiv="Content-Type" content="text/html" charset="UTF-8" >
     <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
@@ -269,16 +269,37 @@
     
     
 </span>
-                <h1>关于Golang的结构体与指针不得不提的二三事</h1>
+                <h1>关于指针与Golang的结构体</h1>
             </div>
         </div>
         <div class="col-md-8 col-md-offset-2">
-      		<p>之前在学C++的时候，指针的用法就困惑了很久。后来有了计算机体系结构基础后，再加上Golang的一些说明，就突然明白了，之前纠结的点在哪里。</p>
-<p>其实让我明白的只是因为<a target="_blank" rel="noopener" href="https://tour.golang.org/moretypes/4">Go tour</a>中的两句话：</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">Struct fields can be accessed through a struct pointer.</span><br><span class="line">结构体字段可以使用结构体指针获取。</span><br><span class="line"></span><br><span class="line">To access the field X of a struct when we have the struct pointer p we could write (*p).X. However, that notation is cumbersome, so the language permits us instead to write just p.X, without the explicit dereference.</span><br><span class="line">结构体指针访问字段本来应该写成(*p).x，但是由于这么写太蠢了，所以允许直接写成p.x。</span><br></pre></td></tr></table></figure>
+      		<p>之前在学C++的时候，指针的用法就困惑了很久。后来有了计算机体系结构基础后，再加上Golang的一些说明，就突然明白了，之前为什么不理解指针。纠结的点在哪里。</p>
+<span id="more"></span>
 
-<p>也就是说，如果见到类似<code>T.x</code>的结构体访问，T有可能是结构体本身，也可能是指针……需要自行区分。</p>
-<p>但有的时候会有很难区分的情况：</p>
+<h2 id="指针的概念"><a href="#指针的概念" class="headerlink" title="指针的概念"></a>指针的概念</h2><p>(学的语言太多语法有些混了，看个意思就好，代码是四不像并不可以运行)</p>
+<ul>
+<li><strong>地址</strong>：一个变量在内存中的存储形式是 <strong>地址 + value</strong>，地址是在指内存中的地址。</li>
+</ul>
+<p>比如 <code>int a = 3</code>，意思是变量 a 在内存中有一个地址，<strong>这个地址储存的 value 为 3</strong>。</p>
+<ul>
+<li><strong>指针 (pointer)</strong> ：是一种变量，<strong>它的 value 仍然是一个地址</strong>。常用<code>*</code>定义指针变量。</li>
+</ul>
+<p>比如 <code>int *b = &amp;a</code>，意思是 <strong>指针变量</strong> b 在内存中有一个地址，<strong>这个地址储存的 value 为 a 的地址</strong>。</p>
+<p>在使用变量（而不是声明或定义变量）时，<code>&amp;</code> 为取地址符。对应的还有一个<code>*</code>为取内容符。比如</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">int</span> a = <span class="number">3</span></span><br><span class="line"><span class="keyword">int</span> *b = &amp;a <span class="comment">// 将 a 的地址作为 b 的 value</span></span><br><span class="line"><span class="built_in">print</span>(b) <span class="comment">// 输出 b 的 value，结果为一个地址，等于 a 的地址(&amp;a)</span></span><br><span class="line"><span class="built_in">print</span>(*b) <span class="comment">//将 b 的 value 作为地址，输出地址中存的值，结果为 3</span></span><br></pre></td></tr></table></figure>
+
+<p>上面仅是个人的概念解释，尽量少地引入新概念。以上概念有更通俗的叫法。</p>
+<p>比如<code>int *b = &amp;a</code>，通常会叫做“变量 b 持有 a 的引用”。个人觉得虽然直观，但对于初学者并不友好。首先，“变量 b”就没有说清楚指针变量的特殊性。然后“a 的引用”，倒是说清楚什么叫做 a 的引用啊……尤其是一些语言没有指针的概念，但引用是随处可见的（比如 Javascript 的 Object 类型）</p>
+<h2 id="Golang-Struct-与-指针的访问"><a href="#Golang-Struct-与-指针的访问" class="headerlink" title="Golang Struct 与 指针的访问"></a>Golang Struct 与 指针的访问</h2><p>其实让我明白的只是因为<a target="_blank" rel="noopener" href="https://tour.golang.org/moretypes/4">Go tour</a>中的两句话：</p>
+<blockquote>
+<p>Struct fields can be accessed through a struct pointer.<br>结构体字段可以使用结构体指针获取。</p>
+</blockquote>
+<blockquote>
+<p>To access the field X of a struct when we have the struct pointer p we could write <code>(*p).X</code>. However, that notation is cumbersome, so the language permits us instead to write just <code>p.X</code>, without the explicit dereference.<br>结构体指针访问字段本来应该写成<code>(*p).x</code>，但是由于这么写太蠢了，所以允许直接写成<code>p.x</code>。</p>
+</blockquote>
+<p>也就是说，如果见到类似<code>T.x</code>的结构体访问，T有可能是结构体本身，也可能是指针……需要自行区分。仅此而已。</p>
+<p>而我之前一直以为 T 只能是结构体本身= =，所以对于指针一直头大……</p>
+<p>但由于存在指针这种特殊的访问方式，在结构体的组合与接口实现中会有一些想不到的情况：</p>
 <ul>
 <li><p>定义了一个接口Interface，方法有Intera()，Interb()</p>
 <figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">type</span> Interface <span class="keyword">interface</span>&#123;</span><br><span class="line">	Intera()</span><br><span class="line">	Interb()</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></li>
@@ -287,16 +308,15 @@
 <li><p>定义了一个结构体Extend，匿名组合了Base，用正常结构体的方式实现了Interb()</p>
 <figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">type</span> Extend <span class="keyword">struct</span> &#123;</span><br><span class="line">  	Base</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="params">(e Extend)</span> <span class="title">Interb</span><span class="params">()</span></span> &#123;&#125;</span><br></pre></td></tr></table></figure></li>
 </ul>
-<p>这个时候，请问谁实现了Interface？</p>
-<p>答案是<strong>Base和Extend本身都没有实现Interface</strong>。</p>
-<p>但是上述代码中完全没有出现的*<strong>Extend（Extend的指针）实现了Interface</strong>。</p>
+<p>这个时候，请问有谁实现了Interface？</p>
+<p>答案是：<strong>Base和Extend本身都没有实现Interface</strong>。但是上述代码中完全没有出现的*<strong>Extend（Extend的指针）实现了Interface</strong>。</p>
 <p>为什么呢？虽然<strong>*Extend</strong>并没有实现第二个方法，但<strong>Extend</strong>实现了，所以<strong>*Extend</strong>是也是可以直接访问第二个方法的（参考上面的(*p).x的解释）。</p>
 <p>而<strong>*Base</strong>实现了第一个方法（Base没有实现），而<strong>Extend</strong>组合了<strong>Base</strong>。因此第一个方法可以也通过<strong>*Extend</strong>访问（Extend无法访问）。</p>
 <p>所以<strong>*Extend</strong>两个方法都能访问，因此实现了Interface。而<strong>Extend</strong>只能访问第二个方法，因此没有实现Interface。</p>
-<p>然后日常使用Extend的时候，为了能使用Interface的方法，会这么写：</p>
+<p>然后日常使用<strong>Extend</strong>的时候，为了能使用Interface的方法，需要使用*<strong>Extend</strong>：</p>
 <figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">interfacelist := <span class="built_in">make</span>([]Interface, <span class="number">0</span>)</span><br><span class="line">interfacelist = <span class="built_in">append</span>(interfacelist, &amp;Extend&#123;&#125;) <span class="comment">// 因为是指针实现Interface，需要传入地址</span></span><br><span class="line">e = interfacelist[<span class="number">0</span>]</span><br></pre></td></tr></table></figure>
 
-<p>在goland对e按下F1时，只会显示，这是个Interface，不会告诉你这是*Extend。如果不是自己从头写的代码，你可能很久都无法发现，这个Interface的实现其实是个指针。你必须在层层组合中，找到是哪一层（这里是Base）让Extend变成了Interface的指针实现。</p>
+<p>在goland对e按下F1时，只会显示，这是个Interface，不会告诉你这是*<strong>Extend</strong>。如果不是自己从头写的代码，你可能很久都无法发现，是个指针类型实现了Interface。你必须在层层组合中，找到是哪一层（这里是Base）让Extend变成了Interface的指针实现。</p>
 <p>对e的type assertion也应该这么写：</p>
 <figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">e_ptr = e.(*Extend) <span class="comment">// 从Interface类型返回一个Extend类型的指针</span></span><br><span class="line">e_ptr.Base <span class="comment">// 等于(*e_ptr).Base</span></span><br></pre></td></tr></table></figure>
 
@@ -306,8 +326,8 @@
         </div>
         <nav class="m-pagination col-md-8 col-md-offset-2 col-sm-24" role="pagination">
     
-    <a class="pull-left" href="/2020/12/12/%E5%8F%97%E4%B8%8D%E4%BA%86%E4%BA%86%EF%BC%8C%E5%86%B3%E5%AE%9A%E7%9C%8B%E7%9C%8B%E6%98%AF%E8%B0%81%E5%9C%A8D%E6%88%91/" style="float: left;">
-        ← 受不了了，决定看看是谁在D我
+    <a class="pull-left" href="/2020/12/12/%E7%9C%8B%E7%9C%8B%E6%98%AF%E8%B0%81%E5%9C%A8D%E6%88%91/" style="float: left;">
+        ← 看看是谁在D我
     </a>
     
     
