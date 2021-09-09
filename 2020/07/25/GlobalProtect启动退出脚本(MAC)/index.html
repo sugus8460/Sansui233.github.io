@@ -273,10 +273,12 @@
             </div>
         </div>
         <div class="col-md-8 col-md-offset-2">
-      		<blockquote>
+      		<p>mac上的Global Protect近似于流氓软件，但迫于学校要求不得不用。于是写了个shell脚本。</p>
+<span id="more"></span>
+
+<blockquote>
 <p>参考：<a target="_blank" rel="noopener" href="https://zhuanlan.zhihu.com/p/121116869">Mac 退出与卸载 GlobalProtect</a></p>
 </blockquote>
-<p>mac上的Global Protect近似于流氓软件，但迫于学校要求不得不用。于是写了个shell脚本。</p>
 <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line">if [ $# -eq 0 ]; then exit 0;fi</span><br><span class="line"></span><br><span class="line">case &quot;$1&quot; in</span><br><span class="line">	-h|--help) </span><br><span class="line">		echo &quot;-l	launch&quot;;</span><br><span class="line">		echo &quot;-k	kill&quot;;</span><br><span class="line">		echo &quot;-as	launch and set autostart&quot;;</span><br><span class="line">		echo &quot;-uas	kill and unset autostart&quot;;</span><br><span class="line">		echo &quot;-h	help&quot;;</span><br><span class="line">		exit 0;;</span><br><span class="line">	-k)</span><br><span class="line">		launchctl unload /Library/LaunchAgents/com.paloaltonetworks.gp.pangp*;exit 0;;</span><br><span class="line">	-l)</span><br><span class="line">		launchctl load /Library/LaunchAgents/com.paloaltonetworks.gp.pangp*;exit 0;;</span><br><span class="line">	-uas)</span><br><span class="line">		launchctl unload -w /Library/LaunchAgents/com.paloaltonetworks.gp.pangp*;exit 0;;</span><br><span class="line">	-as)</span><br><span class="line">		launchctl load -w /Library/LaunchAgents/com.paloaltonetworks.gp.pangp*;exit 0;;</span><br><span class="line">esac</span><br></pre></td></tr></table></figure>
 
 <p>在/usr/local/bin下新建文件，输入以上内容，并赋予执行权限即可。</p>
